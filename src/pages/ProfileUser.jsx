@@ -9,7 +9,10 @@ import {
   FaBirthdayCake,
   FaLock,
 } from "react-icons/fa";
+
 import { MdEmail, MdPhone, MdLocationOn, MdDateRange } from "react-icons/md";
+import owner from "../assets/profile/owner.jpg";
+import cover from "../assets/profile/img-cover.jpg";
 
 const ProfileUser = () => {
   const [editMode, setEditMode] = useState(false);
@@ -24,10 +27,8 @@ const ProfileUser = () => {
     location: "लखनऊ, उत्तर प्रदेश",
     dob: "1990-01-01",
     story: "यहां अपनी कहानी लिखें...",
-    profilePic:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQEZrATmgHOi5ls0YCCQBTkocia_atSw0X-Q&s",
-    coverPhoto:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8cXZ_W2P0noqrgjqFd6F10VPGUVLpKLy6VA&s",
+    profilePic: owner,
+    coverPhoto: cover,
     socialMedia: [
       { id: 1, platform: "Facebook", url: "#" },
       { id: 2, platform: "Twitter", url: "#" },
