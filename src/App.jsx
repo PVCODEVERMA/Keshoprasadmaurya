@@ -1,4 +1,3 @@
-
 import { Routes, Route, Navigate } from "react-router-dom";
 import React, { Suspense, lazy } from "react";
 import NotFound from "./pages/NotFound";
@@ -11,12 +10,13 @@ import Loading from "./components/userUI/Loading";
 
 
 
+
+
 // Layouts
 const Layout = lazy(() => import("./layouts/Layout"));
 const AdminLayout = lazy(() => import("./layouts/AdminLayout"));
 
 // Public Pages
-
 const Home = lazy(() => import("./components/userUI/Home"));
 const SearchScreen = lazy(() => import("./pages/SearchScreen"));
 const Settings = lazy(() => import("./pages/Settings"));
@@ -31,25 +31,23 @@ const Shikayat = lazy(() => import("./pages/Shikayat"));
 const Surveyor = lazy(() => import("./pages/Surveyor"));
 const Soon = lazy(() => import("./pages/Soon"));
 const Samay = lazy(() => import("./pages/samay"));
-const ProfileUser = lazy(()=> import("./pages/ProfileUser"));
-
+const ProfileUser = lazy(() => import("./pages/ProfileUser"));
+const EventDetail = lazy(() => import("./pages/EventDetail"));
+const EventsCarousel = lazy(() => import("./pages/EventsCarousel"))
 // Admin Pages
 const AdminDashboard = lazy(() => import("./pages/admin/Dashboard"));
 const AdminComplaints = lazy(() => import("./components/admin/Complaints"));
 const AdminProfile = lazy(() => import("./pages/admin/Profile"));
 const AdminSettings = lazy(() => import("./pages/admin/Settings"));
-const AdminPanchayatManagement = lazy(() =>
-  import("./components/admin/PanchayatManagement")
-);
-const AdminSurveyManagement = lazy(() =>
-  import("./components/admin/SurveyManagement")
-);
+const AdminPanchayatManagement = lazy(() => import("./components/admin/PanchayatManagement"));
+const AdminSurveyManagement = lazy(() => import("./components/admin/SurveyManagement"));
 const AdminNotifications = lazy(() => import("./pages/admin/Notifications"));
 const AdminDashboardMap = lazy(() => import("./pages/admin/DashboardMap"));
 const CasteSurveyTracker = lazy(() => import("./components/admin/CasteSurveyTracker"));
 const SurveyorTracker = lazy(() => import("./components/admin/SurveyorTracker"));
-// const AdminComplaintManagement = lazy(() => import("./components/admin/Complaints"));
-const AdminUsers = lazy(() => import("./components/admin/UserManagement"))
+const AdminUsers = lazy(() => import("./components/admin/UserManagement"));
+const Blog = lazy(() => import("./components/userUI/Blog")); 
+const BlogPosts = lazy(() => import("./pages/blogPosts"))
 // Auth Check
 const isLoggedIn = true;
 
@@ -74,30 +72,30 @@ const App = () => {
           <Route path="notifications" element={<Notifications />} />
           <Route path="/search" element={<SearchScreen />} />
           <Route path="/settings" element={<Settings />} />
-          <Route path="profileUser"  element={<ProfileUser />} />
+          <Route path="profileUser" element={<ProfileUser />} />   
+          <Route path="/" element={<EventsCarousel />} />
+          <Route path="/event/:id" element={<EventDetail />} />
+          <Route path="/" element={<Blog />} />
+          <Route path="/blog/:id" element={<BlogPosts />} />
+          
+
         </Route>
 
         {/* Admin Layout (Protected) */}
-        <Route
-          path="/admin"
-          element={isLoggedIn ? <AdminLayout /> : <Navigate to="/login" />}
-        >
+        <Route path="/admin" element={isLoggedIn ? <AdminLayout /> : <Navigate to="/login" />}>
+          {/* Default redirect when visiting /admin */}
+          <Route index element={<Navigate to="dashboard" />} />
           <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="profile" element={<AdminProfile />} />
           <Route path="users" element={<AdminUsers />} />
           <Route path="complaints" element={<AdminComplaints />} />
           <Route path="settings" element={<AdminSettings />} />
-          <Route
-            path="panchayatManagement"
-            element={<AdminPanchayatManagement />}
-          />
+          <Route path="panchayatManagement" element={<AdminPanchayatManagement />} />
           <Route path="casteSurveys" element={<CasteSurveyTracker />} />
           <Route path="surveyors" element={<SurveyorTracker />} />
           <Route path="SurveyManagement" element={<AdminSurveyManagement />} />
           <Route path="dashboardMap" element={<AdminDashboardMap />} />
           <Route path="notifications" element={<AdminNotifications />} />
-          
-          
         </Route>
 
         {/* 404 Page */}

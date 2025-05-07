@@ -3,6 +3,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import YogaCards from './YogaCards';
 import RegistrationForm from './Registrationform';
+import InfoCards from './InfoCards';
+import DonationSection from '../components/userUI/DonationSection';
 
 
 
@@ -36,6 +38,8 @@ const YogaScheme = () => {
       {/* Yoga Cards Component */}
       <YogaCards />
 
+      <InfoCards />
+       <DonationSection />
       
 
       <ToastContainer position="top-center" />

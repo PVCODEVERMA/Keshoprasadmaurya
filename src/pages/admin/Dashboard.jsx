@@ -107,24 +107,25 @@ export default function Dashboard() {
   }, [lineData, barData]);
 
   return (
-    <div className="p-6 dark:bg-green-600 min-h-screen">
+    <div className="p-6  min-h-screen">
     
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-6xl mx-auto mb-12">
-        {stats.map((item, index) => (
-          <div
-            key={index}
-            className="bg-white rounded-xl shadow-md p-6 text-center border border-purple-300 hover:shadow-lg transition duration-300"
-          >
-            <h2 className="text-xl font-semibold text-gray-800">
-              {item.label}
-            </h2>
-            <p className="mt-2 text-3xl font-bold text-green-600">
-              {item.value.toLocaleString()}
-            </p>
-          </div>
-        ))}
-      </div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto mb-12">
+  {stats.map((item, index) => (
+    <div
+      key={index}
+      className="bg-white rounded-xl shadow-md p-6 text-center border border-purple-300 hover:shadow-lg transition duration-300"
+    >
+      <h2 className="text-xl font-semibold text-gray-800">
+        {item.label}
+      </h2>
+      <p className="mt-2 text-3xl font-bold text-green-600">
+        {item.value.toLocaleString()}
+      </p>
+    </div>
+  ))}
+</div>
+
 
       {/* Charts Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">

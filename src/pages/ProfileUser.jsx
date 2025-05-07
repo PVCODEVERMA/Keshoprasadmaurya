@@ -141,7 +141,7 @@ const ProfileUser = () => {
                 />
               ) : (
                 <h1 className="text-3xl font-bold text-gray-800">
-                  <FaUser className="inline mr-2 text-blue-600" />
+                  {/* <FaUser className="inline mr-2 text-blue-600" /> */}
                   {profile.name}
                 </h1>
               )}
